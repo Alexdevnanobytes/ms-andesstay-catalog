@@ -1,0 +1,17 @@
+server:
+  port: ${PORT:8082}
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:oracle:thin:@//localhost:1521/FREEPDB1}
+    username: ${CATALOG_DB_USER:ANDES_CATALOG}
+    password: ${CATALOG_DB_PASSWORD:}
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update # Demo: usar migraciones versionadas para producción.
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+internal:
+  token: ${INTERNAL_TOKEN:}
