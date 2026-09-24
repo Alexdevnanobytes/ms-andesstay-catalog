@@ -32,7 +32,7 @@ public class CatalogService {
     @Transactional
     public void deactivate(String id) {
         Unit unit = units.lockById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Unidad inexistente"));
-        if (allocations.existsByUnitIdAndActiveTrue(id)) throw new ResponseStatusException(HttpStatus.CONFLICT, "La unidad tiene reservas activas");
+        if (allocations.existsByUnit_IdAndActiveTrue(id)) throw new ResponseStatusException(HttpStatus.CONFLICT, "La unidad tiene reservas activas");
         unit.deactivate();
     }
     public void validatePeriod(LocalDate from, LocalDate to) {
