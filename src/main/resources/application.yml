@@ -2,16 +2,13 @@ server:
   port: ${PORT:8082}
 spring:
   datasource:
-    url: ${DB_URL:jdbc:oracle:thin:@//localhost:1521/FREEPDB1}
-    username: ${CATALOG_DB_USER:ANDES_CATALOG}
+    url: ${DB_URL:jdbc:postgresql://andesstay-db.cmzs4nqytikw.us-east-1.rds.amazonaws.com:5432/andesstay}
+    username: ${CATALOG_DB_USER:postgres}
     password: ${CATALOG_DB_PASSWORD:}
-    driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: org.postgresql.Driver
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: update # Demo: usar migraciones versionadas para producción.
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.OracleDialect
+      ddl-auto: update # Demo: usar migraciones versionadas para produccion.
 internal:
   token: ${INTERNAL_TOKEN:}
