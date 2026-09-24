@@ -10,5 +10,5 @@ public interface AllocationRepository extends JpaRepository<Allocation, String> 
     @Query("select a from Allocation a where a.unit.id = :unitId and a.active = true and a.startDate < :endDate and a.endDate > :startDate")
     List<Allocation> overlapping(@Param("unitId") String unitId, @Param("startDate") LocalDate startDate,
                                  @Param("endDate") LocalDate endDate);
-    boolean existsByUnitIdAndActiveTrue(String unitId);
+    boolean existsByUnit_IdAndActiveTrue(String unitId);
 }
