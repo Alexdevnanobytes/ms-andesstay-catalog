@@ -1,1 +1,25 @@
+# Compilación (Maven)
 target/
+*.log
+
+# Variables de entorno y secretos: nunca al repositorio
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
