@@ -4,7 +4,7 @@ Microservicio de catálogo de AndesStay. Administra las unidades alojables (habi
 
 - **Puerto por defecto:** 8082
 - **Stack:** Java 17, Spring Boot 3.4, Spring Data JPA, PostgreSQL (AWS RDS)
-- **Tablas:** `as_units` y `as_allocations` (las crea Hibernate con `ddl-auto: update`, solo para demostración)
+- **Tablas:** `as_units` y `as_allocations` (las crean las migraciones Flyway; Hibernate solo valida con `ddl-auto: validate`)
 
 ## Autenticación interna
 
