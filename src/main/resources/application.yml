@@ -9,6 +9,14 @@ spring:
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: update # Demo: usar migraciones versionadas para produccion.
+      ddl-auto: validate
+  # Flyway: migraciones versionadas en src/main/resources/db/migration.
+  # table: historial propio de catalog, porque reservations comparte la base y tiene el suyo.
+  # baseline-version 0: en una base que ya tiene tablas, Flyway parte desde 0 y aplica V1 y V2.
+  flyway:
+    enabled: true
+    table: flyway_schema_history_catalog
+    baseline-on-migrate: true
+    baseline-version: "0"
 internal:
   token: ${INTERNAL_TOKEN:}

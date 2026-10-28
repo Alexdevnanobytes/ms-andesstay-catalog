@@ -13,7 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 @TestPropertySource(properties = {
     "spring.datasource.url=jdbc:h2:mem:catalog;DB_CLOSE_DELAY=-1", "spring.datasource.driver-class-name=org.h2.Driver",
     "spring.datasource.username=sa", "spring.datasource.password=", "spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect",
-    "spring.jpa.hibernate.ddl-auto=create-drop", "internal.token=test-secret"
+    "spring.jpa.hibernate.ddl-auto=create-drop", "internal.token=test-secret", "spring.flyway.enabled=false"
 })
 class CatalogServiceTest {
     @Autowired CatalogService service;
