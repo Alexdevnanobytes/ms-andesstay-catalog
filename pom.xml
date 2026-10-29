@@ -1,15 +1,23 @@
+<!-- pom.xml de Maven: define el proyecto, sus dependencias y cómo se compila. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>cl.andesstay</groupId><artifactId>ms-andesstay-catalog</artifactId><version>1.0.0</version>
+  <!-- Hereda la configuración de Spring Boot 3.4.5. -->
   <parent><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-parent</artifactId><version>3.4.5</version><relativePath/></parent>
   <properties><java.version>17</java.version></properties>
   <dependencies>
+    <!-- web: servidor y controladores REST. -->
     <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId></dependency>
+    <!-- data-jpa: acceso a la base de datos con entidades y repositorios (Hibernate). -->
     <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-data-jpa</artifactId></dependency>
+    <!-- validation: anotaciones @NotBlank, @NotNull, etc. -->
     <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-validation</artifactId></dependency>
+    <!-- Driver JDBC de PostgreSQL (solo se necesita al ejecutar). -->
     <dependency><groupId>org.postgresql</groupId><artifactId>postgresql</artifactId><scope>runtime</scope></dependency>
+    <!-- Solo para pruebas: JUnit y Mockito, y H2, una base en memoria para no depender de RDS en los tests. -->
     <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-test</artifactId><scope>test</scope></dependency>
     <dependency><groupId>com.h2database</groupId><artifactId>h2</artifactId><scope>test</scope></dependency>
   </dependencies>
+  <!-- Empaqueta la aplicación como .jar ejecutable. -->
   <build><plugins><plugin><groupId>org.springframework.boot</groupId><artifactId>spring-boot-maven-plugin</artifactId></plugin></plugins></build>
 </project>

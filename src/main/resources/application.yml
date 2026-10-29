@@ -1,14 +1,18 @@
+# Configuración del microservicio de catálogo. ${VARIABLE:valor} = variable de entorno o valor por defecto.
 server:
   port: ${PORT:8082}
+# Conexión a PostgreSQL en AWS RDS. La contraseña llega por la variable CATALOG_DB_PASSWORD, nunca se escribe aquí.
 spring:
   datasource:
     url: ${DB_URL:jdbc:postgresql://andesstay-db.cmzs4nqytikw.us-east-1.rds.amazonaws.com:5432/andesstay}
     username: ${CATALOG_DB_USER:postgres}
     password: ${CATALOG_DB_PASSWORD:}
     driver-class-name: org.postgresql.Driver
+  # JPA/Hibernate: open-in-view desactivado; ddl-auto: update crea o ajusta las tablas al arrancar.
   jpa:
     open-in-view: false
     hibernate:
       ddl-auto: update # Demo: usar migraciones versionadas para produccion.
+# Token compartido con el BFF y reservations (header X-Internal-Token).
 internal:
   token: ${INTERNAL_TOKEN:}

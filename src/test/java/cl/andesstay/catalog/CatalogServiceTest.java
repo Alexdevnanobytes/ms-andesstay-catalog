@@ -1,3 +1,5 @@
+// Prueba de integración del catálogo: levanta Spring con H2, una base de datos en memoria que reemplaza
+// a PostgreSQL solo durante la prueba (se crea y se borra sola: ddl-auto=create-drop).
 package cl.andesstay.catalog;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +19,11 @@ import org.springframework.web.server.ResponseStatusException;
 })
 class CatalogServiceTest {
     @Autowired CatalogService service;
+    // Regla de negocio completa sobre una cabaña:
+    // 1. Se asigna del día +5 al +8.
+    // 2. Un período que se superpone (+7 a +9) ya no está disponible y asignarlo lanza error (409).
+    // 3. Un período que empieza justo el día de salida (+8 a +10) sí está disponible.
+    // 4. Al liberar la asignación, el período original vuelve a estar disponible.
     @Test void overlappingDatesAreRejectedAndReleasedDatesAvailable() {
         Unit u = service.create(new CatalogController.UnitRequest("C-101", UnitType.CABANA, "Cabaña test", new BigDecimal("30000")));
         LocalDate start = LocalDate.now().plusDays(5);
